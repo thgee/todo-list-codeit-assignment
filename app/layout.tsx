@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Todo List",
   description: "할 일 목록을 관리하는 To Do 서비스",
   icons: {
-    icon: "/icons/todoIcon.svg",
+    icon: "/imgs/favicon.svg",
   },
 };
 
