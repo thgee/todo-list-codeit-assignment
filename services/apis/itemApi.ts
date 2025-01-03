@@ -1,4 +1,4 @@
-import { Item } from "@/types/itemType";
+import { Item } from "../../types/ItemType";
 import axiosInstance from "../axiosInstance";
 
 // 항목 등록
