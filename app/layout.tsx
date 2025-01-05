@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Gnb from "../components/gnb";
 
 export const metadata: Metadata = {
   title: "Todo List",
@@ -16,7 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="mx-auto max-w-[1200px] px-[16px] tablet:px-[24px]">
+        <Gnb />
+        {children}
+      </body>
     </html>
   );
 }
