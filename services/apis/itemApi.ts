@@ -2,12 +2,8 @@ import { Item } from "../../types/ItemType";
 import axiosInstance from "../axiosInstance";
 
 // 항목 등록
-interface CreateItemProps {
-  name: string;
-}
-
-export const createItem = async (data: CreateItemProps) => {
-  const response = await axiosInstance.post<Item>(`/items`, data);
+export const createItem = async (name: string) => {
+  const response = await axiosInstance.post<Item>(`/items`, { name });
   return response.data;
 };
 
@@ -19,7 +15,8 @@ export interface GetItemsResponse {
 }
 
 export const getItems = async () => {
-  const response = await axiosInstance.get<GetItemsResponse[]>(`/items`);
+  const response =
+    await axiosInstance.get<GetItemsResponse[]>(`/items?pageSize=1000`);
   return response.data;
 };
 
