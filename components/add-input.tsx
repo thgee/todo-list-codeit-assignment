@@ -1,4 +1,4 @@
-const SerachInput = () => {
+const AddInput = () => {
   return (
     <input
       type="text"
@@ -8,4 +8,4 @@ const SerachInput = () => {
   );
 };
 
-export default SerachInput;
+export default AddInput;
