@@ -35,7 +35,6 @@ export default {
       fontFamily: {
         "nanumsquare-bold": ['"NanumSquareBold"', "sans-serif"],
         "nanumsquare-regular": ['"NanumSquareRegular"', "sans-serif"],
-        "hs-santokki": ['"HSSantokki-Regular"', "sans-serif"],
       },
       fontSize: {
         "20px": ["20px", "22.7px"],
