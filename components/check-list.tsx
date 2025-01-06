@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import todoCircle from "../public/icons/todo-circle.svg";
 import doneCircle from "../public/icons/done-circle.svg";

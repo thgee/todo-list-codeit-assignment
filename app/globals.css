@@ -20,6 +20,6 @@
 
 @layer components {
   .action-btn {
-    @apply flex h-[52px] w-[164.35px] items-center justify-center gap-[4px] rounded-[24px] border-[2px] border-slate-900 font-nanumsquare-bold text-16px shadow-2px-slate-900 transition-all disabled:cursor-not-allowed;
+    @apply flex h-[52px] w-[164.35px] shrink-0 items-center justify-center gap-[4px] rounded-[24px] border-[2px] border-slate-900 font-nanumsquare-bold text-16px shadow-2px-slate-900 transition-all disabled:cursor-not-allowed;
   }
 }
