@@ -14,9 +14,7 @@ const CheckListDetail = ({ isDone, text }: CheckListDetailProps) => {
   // 완료 여부에 따른 아이콘 적용
   const checkIcon = isDone ? doneCircle : todoCircle;
 
-  const handleClickCheckBtn = () => {
-    return !isDone;
-  };
+  const handleClickCheckBtn = () => {};
 
   return (
     <div
