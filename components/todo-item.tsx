@@ -20,19 +20,19 @@ const DONE_STATUS_STYLES = {
   },
 };
 
-interface CheckListProps {
+interface TodoItemProps {
   isDone: boolean;
   text: string;
   itemId: number;
 }
 
-const CheckList = ({ isDone, text, itemId }: CheckListProps) => {
+const TodoItem = ({ isDone, text, itemId }: TodoItemProps) => {
   const style = isDone ? DONE_STATUS_STYLES.done : DONE_STATUS_STYLES.notDone;
 
   const handleClickCheckBtn = () => {};
 
   return (
-    <div
+    <li
       className={`${style.bgStyle} flex h-[50px] items-center gap-[16px] rounded-[27px] border-2 border-slate-900 px-[12px]`}
     >
       <Image
@@ -47,8 +47,8 @@ const CheckList = ({ isDone, text, itemId }: CheckListProps) => {
       >
         {text}
       </Link>
-    </div>
+    </li>
   );
 };
 
-export default CheckList;
+export default TodoItem;

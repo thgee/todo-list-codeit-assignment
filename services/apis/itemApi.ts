@@ -12,7 +12,7 @@ export const createItem = async (data: CreateItemProps) => {
 };
 
 // 항목 목록 조회
-interface GetItemsResponse {
+export interface GetItemsResponse {
   name: string;
   id: number;
   isCompleted: boolean;
@@ -48,7 +48,7 @@ interface DeleteItemResponse {
 }
 export const deleteItem = async (itemId: number) => {
   const response = await axiosInstance.delete<DeleteItemResponse>(
-    `/items/${itemId}`
+    `/items/${itemId}`,
   );
   return response.data;
 };

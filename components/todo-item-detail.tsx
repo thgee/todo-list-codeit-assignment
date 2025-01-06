@@ -2,12 +2,12 @@ import Image from "next/image";
 import todoCircle from "../public/icons/todo-circle.svg";
 import doneCircle from "../public/icons/done-circle.svg";
 
-interface CheckListDetailProps {
+interface TodoItemDetailProps {
   isDone: boolean;
   text: string;
 }
 
-const CheckListDetail = ({ isDone, text }: CheckListDetailProps) => {
+const TodoItemDetail = ({ isDone, text }: TodoItemDetailProps) => {
   // 완료 여부에 따른 배경색 적용
   const bgStyle = isDone ? "bg-violet-200" : "bg-white";
 
@@ -31,4 +31,4 @@ const CheckListDetail = ({ isDone, text }: CheckListDetailProps) => {
   );
 };
 
-export default CheckListDetail;
+export default TodoItemDetail;
