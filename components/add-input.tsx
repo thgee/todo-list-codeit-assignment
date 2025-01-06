@@ -2,7 +2,7 @@ import ActionBtn from "./action-btn";
 
 const AddInput = () => {
   return (
-    <section className="mb-[24px] flex gap-[8px] tablet:mb-[40px] tablet:gap-[16px]">
+    <section className="mb-[24px] flex grow gap-[8px] tablet:mb-[40px] tablet:gap-[16px]">
       <input
         type="text"
         placeholder="할 일을 입력해주세요"
