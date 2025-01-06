@@ -42,6 +42,16 @@ export default {
         "18px": ["18px", "20.43px"],
         "16px": ["16px", "18.16px"],
       },
+
+      boxShadow: {
+        "2px-slate-900": "2px 2px 0px #0F172A",
+      },
+
+      // 반응형 BreakPoints
+      screens: {
+        tablet: "480px",
+        pc: "768px",
+      },
     },
   },
   plugins: [],
