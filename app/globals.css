@@ -13,9 +13,6 @@
 }
 
 @layer base {
-  input {
-    field-sizing: content;
-  }
 }
 
 @layer utilities {

@@ -28,6 +28,8 @@ const TodoItemDetail = ({
   // 할 일 이름 변경
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setIsEditing(true);
+    if (e.target.value.length === 0)
+      return alert("제목을 한 글자 이상 입력해주세요.");
     setItem((item) => {
       return { ...item, name: e.target.value } as Item;
     });
@@ -44,7 +46,7 @@ const TodoItemDetail = ({
         onClick={onClick}
       />
       <input
-        className="cursor-pointer bg-transparent font-nanumsquare-bold text-20px underline outline-none"
+        className="max-w-[76%] cursor-pointer bg-transparent font-nanumsquare-bold text-20px underline outline-none [field-sizing:content] tablet:max-w-[86%]"
         value={name || ""}
         onChange={handleNameChange}
       />

@@ -6,6 +6,7 @@ interface UploadImageResponse {
 
 // 이미지 업로드
 export const uploadImage = async (formData: FormData) => {
+  console.log([...formData.entries()]);
   const response = await axiosInstance.post<UploadImageResponse>(
     `/images/upload`,
     formData,
@@ -13,7 +14,7 @@ export const uploadImage = async (formData: FormData) => {
       headers: {
         "Content-Type": "multipart/form-data",
       },
-    }
+    },
   );
-  return response.data;
+  return response.data.url;
 };
