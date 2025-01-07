@@ -10,18 +10,19 @@ import {
   deleteItem,
   getItem,
   updateItem,
+  UpdateItemProps,
 } from "../../../services/apis/itemApi";
 import { useEffect, useState } from "react";
 import { Item } from "../../../types/ItemType";
 import { HOME_PAGE_ROUTE } from "../../../constants/routes";
 
 const Detail = () => {
+  const router = useRouter();
   const params = useParams();
   const id = Number(params.id);
 
   const [item, setItem] = useState<Item>();
-  const [memo, setMemo] = useState<string>("");
-  const router = useRouter();
+  const [isEditing, setIsEditing] = useState(false);
 
   const handleDelete = () => {
     // 삭제 확인 모달 표시
@@ -38,16 +39,32 @@ const Detail = () => {
     }
   };
 
+  const handleEdit = () => {
+    // 현재 아이템에서 API 호출에 필요한 속성만 추출
+    const { imageUrl, isCompleted, memo, name } = item!;
+    const updatedItem: UpdateItemProps = {
+      imageUrl: imageUrl || "",
+      memo: memo || "",
+      isCompleted,
+      name,
+    };
+
+    // Update API 호출
+    updateItem(id, updatedItem)
+      .then(() => {
+        alert("수정 완료하였습니다.");
+        router.push(HOME_PAGE_ROUTE);
+      })
+      .catch(() => {
+        alert("수정에 실패하였습니다.");
+      });
+  };
+
+  // 할 일 상태 변경
   const handleClickCheckBtn = () => {
-    // 현재 아이템에서 complete 변경 => 낙관적 업데이트
+    setIsEditing(true);
     setItem((item) => {
       return { ...item, isCompleted: !item?.isCompleted } as Item;
-    });
-
-    // patch API 호출
-    updateItem(id, { isCompleted: !item?.isCompleted }).catch(() => {
-      alert("할 일 상태 변경에 실패하였습니다.");
-      location.reload();
     });
   };
 
@@ -55,7 +72,6 @@ const Detail = () => {
     // 상세정보 API 호출
     getItem(id).then((data) => {
       setItem(data);
-      setMemo(data.memo);
     });
   }, []);
 
@@ -64,9 +80,11 @@ const Detail = () => {
       {/* Todo 타이틀 섹션*/}
       <section className="mb-[17px] tablet:mb-[24px]">
         <TodoItemDetail
+          setItem={setItem}
           onClick={handleClickCheckBtn}
-          text={item?.name}
+          name={item?.name}
           isDone={item?.isCompleted}
+          setIsEditing={setIsEditing}
         />
       </section>
 
@@ -76,7 +94,7 @@ const Detail = () => {
           <Image src={imgNullIcon} alt="imgNullIcon" />
           <EditImgBtn
             className="absolute bottom-[16px] right-[16px]"
-            onClick={() => {}}
+            onClick={handleUploadImgBtn}
             type="add"
           />
         </div>
@@ -85,9 +103,12 @@ const Detail = () => {
             Memo
           </span>
           <textarea
-            value={memo || ""}
+            value={item?.memo || ""}
             onChange={(e) => {
-              setMemo(e.currentTarget.value);
+              setItem((item) => {
+                setIsEditing(true);
+                return { ...item, memo: e.target.value } as Item;
+              });
             }}
             className="memo-scroll-bar m-[16px] mt-[58px] h-[229px] w-full resize-none bg-transparent pr-[12px] text-center font-nanumsquare-regular text-16px outline-none"
           />
@@ -96,7 +117,7 @@ const Detail = () => {
 
       {/* 버튼 섹션*/}
       <section className="flex items-center justify-center gap-[7px] tablet:gap-[16px] pc:justify-end">
-        <ActionBtn type="edit" active={true} onClick={() => {}} />
+        <ActionBtn type="edit" active={isEditing} onClick={handleEdit} />
         <ActionBtn type="delete" onClick={handleDelete} />
       </section>
     </div>

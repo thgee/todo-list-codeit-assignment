@@ -27,7 +27,7 @@ export const getItem = async (itemId: number) => {
 };
 
 // 항목 수정 (이미지 URL로 변환하는 과정 필요)
-interface UpdateItemProps {
+export interface UpdateItemProps {
   name?: string;
   memo?: string;
   imageUrl?: string;
