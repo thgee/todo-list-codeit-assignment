@@ -45,7 +45,7 @@ const TodoList = ({ type, allItems, setAllItems }: TodoListProps) => {
   // 아이템이 없는 경우 데이터 없음 이미지 렌더링
   if (!items.length)
     return (
-      <div className="grow">
+      <div className="w-full">
         <Image src={LIST_TYPE[type].labelImg} alt={`${type}Label`} />
         <div className="flex flex-col items-center gap-[24px] pc:mt-[64px]">
           <Image
