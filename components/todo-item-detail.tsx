@@ -7,13 +7,11 @@ import { Item } from "../types/ItemType";
 interface TodoItemDetailProps {
   isDone?: boolean;
   name?: string;
-  onClick: () => void;
   setItem: Dispatch<SetStateAction<Item | undefined>>;
   setIsEditing: Dispatch<SetStateAction<boolean>>;
 }
 
 const TodoItemDetail = ({
-  onClick,
   isDone,
   name,
   setItem,
@@ -24,6 +22,14 @@ const TodoItemDetail = ({
 
   // 완료 여부에 따른 아이콘 적용
   const checkIcon = isDone ? doneCircle : todoCircle;
+
+  // 완료 상태 변경
+  const handleClickCheckBtn = () => {
+    setIsEditing(true);
+    setItem((item) => {
+      return { ...item, isCompleted: !item?.isCompleted } as Item;
+    });
+  };
 
   // 할 일 이름 변경
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -43,7 +49,7 @@ const TodoItemDetail = ({
         className="cursor-pointer"
         src={checkIcon}
         alt={"check or not"}
-        onClick={onClick}
+        onClick={handleClickCheckBtn}
       />
       <input
         className="max-w-[76%] cursor-pointer bg-transparent font-nanumsquare-bold text-20px underline outline-none [field-sizing:content] tablet:max-w-[86%]"
