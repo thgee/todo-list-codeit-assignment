@@ -24,15 +24,29 @@
 
 <br>
 
-| 홈 화면                                                                                                     |
-| ----------------------------------------------------------------------------------------------------------- |
-| <img src="https://github.com/user-attachments/assets/5489dd12-3a95-451b-907f-272e73f190af" width = "600" /> |
+
+
+
+
+### 홈 화면   
+
+
+
+
+https://github.com/user-attachments/assets/8652bb5c-f582-4529-90ab-90c1088daeaa
+
+
+
+
+
 
 <br />
 
-| 상세페이지                                                                                                  |
-| ----------------------------------------------------------------------------------------------------------- |
-| <img src="https://github.com/user-attachments/assets/cdb39498-4b75-4ccb-9459-c08ecee1b33b" width = "600" /> |
+### 상세페이지                                                                                                  
+
+https://github.com/user-attachments/assets/ec463d55-a76e-460b-96cd-05199423c027
+
+
 
 <br />
 <br />
