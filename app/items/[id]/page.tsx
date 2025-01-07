@@ -105,7 +105,7 @@ const Detail = () => {
   }, []);
 
   return (
-    <div className="py-[16px] tablet:py-[24px] pc:w-[1200px] pc:px-[120px]">
+    <div className="mx-auto min-h-[calc(100vh-60px)] bg-white px-[16px] py-[16px] tablet:px-[24px] tablet:py-[24px] pc:w-[1200px] pc:px-[120px]">
       {/* Todo 이름 섹션*/}
       <section className="mb-[17px] tablet:mb-[24px]">
         <TodoItemDetail

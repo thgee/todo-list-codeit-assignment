@@ -17,9 +17,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="mx-auto max-w-[1200px] px-[16px] tablet:px-[24px]">
+      <body className="">
         <Gnb />
-        <div>{children}</div>
+        <div className="mx-auto min-h-[calc(100vh-60px)] bg-gray-50">
+          <div>{children}</div>
+        </div>
       </body>
     </html>
   );

@@ -15,7 +15,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="py-[16px] tablet:py-[24px]">
+    <div className="mx-auto max-w-[1200px] px-[16px] py-[16px] tablet:px-[24px] tablet:py-[24px]">
       {/* 할 일 추가 섹션 */}
       <AddInput setAllItems={setAllItems} />
 
