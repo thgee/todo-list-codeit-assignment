@@ -1,12 +1,12 @@
 "use client";
 
 import AddInput from "../../components/add-input";
-import { getItems, GetItemsResponse } from "../../services/apis/itemApi";
+import { getItems, ItemResponse } from "../../services/apis/itemApi";
 import TodoList from "./_components/todo-list";
 import { useEffect, useState } from "react";
 
 const Home = () => {
-  const [allItems, setAllItems] = useState<GetItemsResponse[]>([]);
+  const [allItems, setAllItems] = useState<ItemResponse[]>([]);
 
   useEffect(() => {
     getItems().then((items) => {
@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <div className="py-[16px] tablet:py-[24px]">
       {/* 할 일 추가 섹션 */}
-      <AddInput />
+      <AddInput setAllItems={setAllItems} />
 
       {/* 할 일 리스트 섹션 */}
       <section className="flex flex-col gap-[48px] pc:flex-row pc:gap-[24px]">

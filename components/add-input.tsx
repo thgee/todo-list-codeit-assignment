@@ -1,19 +1,42 @@
-import { useState, ChangeEvent } from "react";
+import {
+  useState,
+  ChangeEvent,
+  FormEventHandler,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import ActionBtn from "./action-btn";
-import { createItem } from "../services/apis/itemApi";
+import { createItem, ItemResponse } from "../services/apis/itemApi";
 
-const AddInput = () => {
+interface AddInputProps {
+  setAllItems: Dispatch<SetStateAction<ItemResponse[]>>;
+}
+
+const AddInput = ({ setAllItems }: AddInputProps) => {
   const [newTodo, setNewTodo] = useState("");
 
   const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     setNewTodo(e.currentTarget.value);
   };
 
-  const handleSubmit = (): void => {
-    if (newTodo.trim()) {
-      createItem(newTodo);
-      setNewTodo("");
-    }
+  const handleSubmit: FormEventHandler<HTMLButtonElement> = (e) => {
+    e.preventDefault();
+
+    // 공백만 입력한 경우 등록 안됨
+    createItem(newTodo)
+      .then((data) => {
+        const newTodoItem = data;
+
+        // 할 일 등록 후 서버 응답을 기반으로 상태 업데이트
+        setAllItems((items) => [newTodoItem as ItemResponse, ...items]);
+
+        // 입력창 비우기
+        setNewTodo("");
+      })
+      .catch(() => {
+        alert("할 일 등록을 실패하였습니다.");
+        location.reload();
+      });
   };
 
   return (
@@ -28,7 +51,7 @@ const AddInput = () => {
       <ActionBtn
         onClick={handleSubmit}
         type="add"
-        active={Boolean(newTodo.length)} // input에 입력값이 있을 경우 버튼 활성화
+        active={Boolean(newTodo.trim().length)} // input에 입력값이 있을 경우 버튼 활성화
       />
     </form>
   );

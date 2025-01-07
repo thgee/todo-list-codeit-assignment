@@ -1,4 +1,4 @@
-import { GetItemsResponse } from "../../../services/apis/itemApi";
+import { ItemResponse } from "../../../services/apis/itemApi";
 import Image from "next/image";
 import todoLabel from "../../../public/imgs/todo-label.svg";
 import doneLabel from "../../../public/imgs/done-label.svg";
@@ -26,13 +26,13 @@ const LIST_TYPE = {
 
 interface TodoListProps {
   type: "todo" | "done";
-  allItems: GetItemsResponse[];
-  setAllItems: Dispatch<SetStateAction<GetItemsResponse[]>>;
+  allItems: ItemResponse[];
+  setAllItems: Dispatch<SetStateAction<ItemResponse[]>>;
 }
 
 // 타입에 따라  List를 렌더링하는 컴포넌트
 const TodoList = ({ type, allItems, setAllItems }: TodoListProps) => {
-  const [items, setItems] = useState<GetItemsResponse[]>([]);
+  const [items, setItems] = useState<ItemResponse[]>([]);
 
   useEffect(() => {
     setItems(

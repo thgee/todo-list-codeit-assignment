@@ -5,7 +5,7 @@ import todoCircle from "../public/icons/todo-circle.svg";
 import doneCircle from "../public/icons/done-circle.svg";
 import { TODO_DETAIL_ROUTE } from "../constants/routes";
 import Link from "next/link";
-import { GetItemsResponse, updateItem } from "../services/apis/itemApi";
+import { ItemResponse, updateItem } from "../services/apis/itemApi";
 import { Dispatch, SetStateAction } from "react";
 
 // 완료 여부에 따른 스타일 및 아이콘 정의
@@ -26,7 +26,7 @@ interface TodoItemProps {
   isDone: boolean;
   text: string;
   itemId: number;
-  setAllItems: Dispatch<SetStateAction<GetItemsResponse[]>>;
+  setAllItems: Dispatch<SetStateAction<ItemResponse[]>>;
 }
 
 const TodoItem = ({ isDone, text, itemId, setAllItems }: TodoItemProps) => {

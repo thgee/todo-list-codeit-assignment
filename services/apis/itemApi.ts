@@ -2,21 +2,21 @@ import { Item } from "../../types/ItemType";
 import axiosInstance from "../axiosInstance";
 
 // 항목 등록
-export const createItem = async (name: string) => {
+export const createItem = async (name: string): Promise<Item> => {
   const response = await axiosInstance.post<Item>(`/items`, { name });
+  console.log(response.data);
   return response.data;
 };
 
 // 항목 목록 조회
-export interface GetItemsResponse {
+export interface ItemResponse {
   name: string;
   id: number;
   isCompleted: boolean;
 }
-
 export const getItems = async () => {
   const response =
-    await axiosInstance.get<GetItemsResponse[]>(`/items?pageSize=1000`);
+    await axiosInstance.get<ItemResponse[]>(`/items?pageSize=1000`);
   return response.data;
 };
 
