@@ -64,7 +64,7 @@ const TodoItem = ({ isDone, text, itemId, setAllItems }: TodoItemProps) => {
       />
       <Link
         href={`${TODO_DETAIL_ROUTE}/${itemId}`}
-        className={`font-nanumsquare-regular text-16px ${style.textStyle}`}
+        className={`w-full font-nanumsquare-regular text-16px ${style.textStyle}`}
       >
         {/* text를 최대 50자 까지만 보여줌 */}
         {text.length >= 50 ? `${text.slice(0, 50)}...` : text}

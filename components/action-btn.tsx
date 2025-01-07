@@ -39,7 +39,7 @@ interface ActionBtnProps {
 
 // 타입별로 재사용 가능한 버튼
 // add 타입의 경우 480px을 기준으로 UI가 변경되도록 반응형 구현
-const ActionBtn = ({ type, active = false, onClick }: ActionBtnProps) => {
+const ActionBtn = ({ type, active = true, onClick }: ActionBtnProps) => {
   // 버튼 타입과 활성화 상태에 따라 적절한 아이콘 선택
   const icon =
     type === "add" ? ICONS[type][active ? "active" : "inactive"] : ICONS[type];
