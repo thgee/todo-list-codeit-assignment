@@ -1,14 +1,19 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import imgNullIcon from "../../../public/imgs/img-null.svg";
 import ActionBtn from "../../../components/action-btn";
 import Image from "next/image";
 import EditImgBtn from "../../../components/edit-img-btn";
 import TodoItemDetail from "../../../components/todo-item-detail";
-import { getItem, updateItem } from "../../../services/apis/itemApi";
+import {
+  deleteItem,
+  getItem,
+  updateItem,
+} from "../../../services/apis/itemApi";
 import { useEffect, useState } from "react";
 import { Item } from "../../../types/ItemType";
+import { HOME_PAGE_ROUTE } from "../../../constants/routes";
 
 const Detail = () => {
   const params = useParams();
@@ -16,6 +21,22 @@ const Detail = () => {
 
   const [item, setItem] = useState<Item>();
   const [memo, setMemo] = useState<string>("");
+  const router = useRouter();
+
+  const handleDelete = () => {
+    // 삭제 확인 모달 표시
+    if (confirm(`"${item?.name}" 할 일을 삭제하시겠습니까?`)) {
+      deleteItem(id)
+        .then(() => {
+          // 아이템 삭제 후 홈으로 이동
+          alert("삭제 완료하였습니다.");
+          router.push(HOME_PAGE_ROUTE);
+        })
+        .catch(() => {
+          alert("삭제에 실패하였습니다.");
+        });
+    }
+  };
 
   const handleClickCheckBtn = () => {
     // 현재 아이템에서 complete 변경 => 낙관적 업데이트
@@ -64,7 +85,7 @@ const Detail = () => {
             Memo
           </span>
           <textarea
-            value={memo}
+            value={memo || ""}
             onChange={(e) => {
               setMemo(e.currentTarget.value);
             }}
@@ -76,7 +97,7 @@ const Detail = () => {
       {/* 버튼 섹션*/}
       <section className="flex items-center justify-center gap-[7px] tablet:gap-[16px] pc:justify-end">
         <ActionBtn type="edit" active={true} onClick={() => {}} />
-        <ActionBtn type="delete" onClick={() => {}} />
+        <ActionBtn type="delete" onClick={handleDelete} />
       </section>
     </div>
   );
