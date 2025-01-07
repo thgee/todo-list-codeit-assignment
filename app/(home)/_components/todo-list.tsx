@@ -7,6 +7,7 @@ import doneNullLarge from "../../../public/imgs/done-null-large.svg";
 import todoNullSmall from "../../../public/imgs/todo-null-small.svg";
 import doneNullSmall from "../../../public/imgs/done-null-small.svg";
 import TodoItem from "../../../components/todo-item";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 const LIST_TYPE = {
   todo: {
@@ -24,13 +25,24 @@ const LIST_TYPE = {
 };
 
 interface TodoListProps {
-  items: GetItemsResponse[];
   type: "todo" | "done";
+  allItems: GetItemsResponse[];
+  setAllItems: Dispatch<SetStateAction<GetItemsResponse[]>>;
 }
 
-// 타입에 따라 Todo List를 렌더링하는 컴포넌트
-const TodoList = ({ items, type }: TodoListProps) => {
-  // Todo 아이템이 없는 경우 데이터 없음 이미지 렌더링
+// 타입에 따라  List를 렌더링하는 컴포넌트
+const TodoList = ({ type, allItems, setAllItems }: TodoListProps) => {
+  const [items, setItems] = useState<GetItemsResponse[]>([]);
+
+  useEffect(() => {
+    setItems(
+      allItems.filter((item) =>
+        type === "done" ? item.isCompleted : !item.isCompleted,
+      ),
+    );
+  }, [allItems]);
+
+  // 아이템이 없는 경우 데이터 없음 이미지 렌더링
   if (!items.length)
     return (
       <div className="grow">
@@ -57,9 +69,9 @@ const TodoList = ({ items, type }: TodoListProps) => {
       </div>
     );
 
-  // Todo 아이템이 있는 경우 리스트 렌더링
+  //  아이템이 있는 경우 리스트 렌더링
   return (
-    <div className="grow">
+    <div className="w-full">
       <Image src={LIST_TYPE[type].labelImg} alt={`${type}Label`} />
       <ul className="mt-[16px] flex grow flex-col gap-[16px]">
         {items.map((item) => (
@@ -68,6 +80,7 @@ const TodoList = ({ items, type }: TodoListProps) => {
             itemId={item.id}
             isDone={item.isCompleted}
             text={item.name}
+            setAllItems={setAllItems}
           />
         ))}
       </ul>

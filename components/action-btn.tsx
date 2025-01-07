@@ -3,6 +3,7 @@ import checkIcon from "../public/icons/check.svg";
 import plusActiveIcon from "../public/icons/plus-active.svg";
 import plusInactiveIcon from "../public/icons/plus-inactive.svg";
 import deleteIcon from "../public/icons/delete.svg";
+import { FormEventHandler } from "react";
 
 // 버튼 타입과 상태에 따라 사용할 아이콘 매핑
 const ICONS = {
@@ -33,7 +34,7 @@ type BtnType = "add" | "delete" | "edit";
 interface ActionBtnProps {
   type: BtnType;
   active?: boolean;
-  onClick: () => void;
+  onClick: FormEventHandler<HTMLButtonElement>;
 }
 
 // 타입별로 재사용 가능한 버튼
