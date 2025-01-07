@@ -54,7 +54,7 @@ const TodoItem = ({ isDone, text, itemId, setAllItems }: TodoItemProps) => {
 
   return (
     <li
-      className={`${style.bgStyle} flex h-[50px] items-center gap-[16px] rounded-[27px] border-2 border-slate-900 px-[12px]`}
+      className={`${style.bgStyle} flex h-[50px] shrink-0 items-center gap-[16px] rounded-[27px] border-2 border-slate-900 px-[12px]`}
     >
       <Image
         className="cursor-pointer"
