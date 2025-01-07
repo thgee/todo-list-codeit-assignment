@@ -1,6 +1,6 @@
 # <img width="60" src = "https://github.com/user-attachments/assets/b9cb342a-1fe7-464a-9a56-76757e5fc93c"/> Todo Friend
 
-#### 배포 URL : todo-list-codeit-assignment.vercel.app
+#### 배포 URL : https://todo-list-codeit-assignment.vercel.app
 
 - 할 일 목록을 관리해주는 똑똑한 Todo 친구
 - 코드잇 프론트엔드 단기심화 트랙 과제
