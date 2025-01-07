@@ -2,24 +2,21 @@ import { Item } from "../../types/ItemType";
 import axiosInstance from "../axiosInstance";
 
 // 항목 등록
-interface CreateItemProps {
-  name: string;
-}
-
-export const createItem = async (data: CreateItemProps) => {
-  const response = await axiosInstance.post<Item>(`/items`, data);
+export const createItem = async (name: string): Promise<Item> => {
+  const response = await axiosInstance.post<Item>(`/items`, { name });
+  console.log(response.data);
   return response.data;
 };
 
 // 항목 목록 조회
-interface GetItemsResponse {
+export interface ItemResponse {
   name: string;
   id: number;
   isCompleted: boolean;
 }
-
 export const getItems = async () => {
-  const response = await axiosInstance.get<GetItemsResponse[]>(`/items`);
+  const response =
+    await axiosInstance.get<ItemResponse[]>(`/items?pageSize=1000`);
   return response.data;
 };
 
@@ -48,7 +45,7 @@ interface DeleteItemResponse {
 }
 export const deleteItem = async (itemId: number) => {
   const response = await axiosInstance.delete<DeleteItemResponse>(
-    `/items/${itemId}`
+    `/items/${itemId}`,
   );
   return response.data;
 };

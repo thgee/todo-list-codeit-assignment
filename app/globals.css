@@ -12,11 +12,6 @@
   src: url("/fonts/NanumSquareRegular.ttf") format("truetype");
 }
 
-@font-face {
-  font-family: "HSSantokki-Regular";
-  src: url("/fonts/HSSantokki-Regular.ttf") format("truetype");
-}
-
 @layer base {
 }
 
@@ -25,6 +20,6 @@
 
 @layer components {
   .action-btn {
-    @apply shadow-2px-slate-900 flex h-[52px] w-[164.35px] items-center justify-center gap-[4px] rounded-[24px] border-[2px] border-slate-900 font-nanumsquare-bold text-16px transition-all disabled:cursor-not-allowed;
+    @apply flex h-[52px] w-[164.35px] shrink-0 items-center justify-center gap-[4px] rounded-[24px] border-[2px] border-slate-900 font-nanumsquare-bold text-16px shadow-2px-slate-900 transition-all disabled:cursor-not-allowed;
   }
 }
