@@ -3,18 +3,17 @@ import todoCircle from "../public/icons/todo-circle.svg";
 import doneCircle from "../public/icons/done-circle.svg";
 
 interface TodoItemDetailProps {
-  isDone: boolean;
-  text: string;
+  isDone?: boolean;
+  text?: string;
+  onClick: () => void;
 }
 
-const TodoItemDetail = ({ isDone, text }: TodoItemDetailProps) => {
+const TodoItemDetail = ({ onClick, isDone, text }: TodoItemDetailProps) => {
   // 완료 여부에 따른 배경색 적용
   const bgStyle = isDone ? "bg-violet-200" : "bg-white";
 
   // 완료 여부에 따른 아이콘 적용
   const checkIcon = isDone ? doneCircle : todoCircle;
-
-  const handleClickCheckBtn = () => {};
 
   return (
     <div
@@ -24,7 +23,7 @@ const TodoItemDetail = ({ isDone, text }: TodoItemDetailProps) => {
         className="cursor-pointer"
         src={checkIcon}
         alt={"check or not"}
-        onClick={handleClickCheckBtn}
+        onClick={onClick}
       />
       <span className="font-nanumsquare-bold text-20px underline">{text}</span>
     </div>
