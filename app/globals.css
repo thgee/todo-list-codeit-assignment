@@ -16,6 +16,10 @@
 }
 
 @layer utilities {
+  /* Memo textarea 커스텀 스크롤바 */
+  .memo-scroll-bar {
+    @apply rounded-[3px] [&::-webkit-scrollbar-thumb]:cursor-pointer [&::-webkit-scrollbar-thumb]:bg-amber-200 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:w-[4px];
+  }
 }
 
 @layer components {

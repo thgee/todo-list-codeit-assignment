@@ -10,13 +10,14 @@ const BUTTON_STYLE = {
 interface EditImgBtnProps {
   type: "add" | "edit";
   onClick: () => void;
+  className?: string;
 }
 
-const EditImgBtn = ({ type, onClick }: EditImgBtnProps) => {
+const EditImgBtn = ({ type, onClick, className }: EditImgBtnProps) => {
   return (
     <button
       onClick={onClick}
-      className={`flex size-[64px] items-center justify-center rounded-full ${BUTTON_STYLE[type]}`}
+      className={`flex size-[64px] items-center justify-center rounded-full ${BUTTON_STYLE[type]} ${className}`}
     >
       <Image src={type === "add" ? addIcon : editIcon} alt={`${type}Icon`} />
     </button>

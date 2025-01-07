@@ -7,7 +7,7 @@ import { HOME_PAGE_ROUTE } from "../constants/routes";
 const Gnb = () => {
   return (
     <>
-      <nav className="flex h-[60px] items-center bg-white">
+      <nav className="m-auto flex h-[60px] max-w-[1200px] items-center bg-white px-[16px] tablet:px-[24px]">
         <Link href={HOME_PAGE_ROUTE}>
           {/* 모바일 환경에서는 텍스트가 없는 로고 사용 */}
           <Image src={logoSmall} alt="logoSmall" className="tablet:hidden" />
