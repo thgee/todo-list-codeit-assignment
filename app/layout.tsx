@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import "./globals.css";
 import Gnb from "../components/gnb";
@@ -21,6 +22,7 @@ export default function RootLayout({
         <Gnb />
         <div className="mx-auto min-h-[calc(100vh-60px)] bg-gray-50">
           <div>{children}</div>
+          <SpeedInsights />
         </div>
       </body>
     </html>
